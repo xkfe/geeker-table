@@ -1,0 +1,61 @@
+{
+  "name": "@xkfe/geeker-table",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "geeker-admin table component",
+  "author": {
+    "name": "xkfe",
+    "email": "xkfe0516@qq.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xkfe/geeker-table",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xkfe/geeker-table.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xkfe/geeker-table/issues"
+  },
+  "keywords": [
+    "@xkfe/geeker-table",
+    "element-plus",
+    "typescript",
+    "el-table",
+    "vue3"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.4.0"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.61.5",
+    "element-plus": "^2.7.7",
+    "vue": "^3.4.31"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.23.2",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "eslint": "9.5.0",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.7",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vue-tsc": "^2.0.24"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
