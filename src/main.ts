@@ -2,4 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 
-createApp(App).mount('#app')
+import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/src/dark/css-vars.scss'
+import './element.scss'
+import ElementPlus from 'element-plus'
+
+import GeekerTable from '../packages'
+
+const app = createApp(App)
+
+app.use(ElementPlus).use(GeekerTable).mount('#app')

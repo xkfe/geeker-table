@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <div>
-    App
+  <div style="height: 100vh;">
+    <GeekerTable />
   </div>
 </template>
 
