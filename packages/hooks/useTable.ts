@@ -17,7 +17,7 @@ export function useTable(api?: (params: any) => Promise<any>, initParam: object 
       // 当前页数
       pageNum: 1,
       // 每页显示条数
-      pageSize: 10,
+      pageSize: 25,
       // 总条数
       total: 0,
     },
