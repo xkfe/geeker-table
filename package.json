@@ -2,7 +2,7 @@
   "name": "@xkfe/geeker-table",
   "type": "module",
   "version": "0.0.1",
-  "description": "geeker-admin table component",
+  "description": "✨二次封装element-plus的Table,高度灵活的配置,自动请求,简单快速 crud 实现!",
   "author": {
     "name": "xkfe",
     "email": "xkfe0516@qq.com"
