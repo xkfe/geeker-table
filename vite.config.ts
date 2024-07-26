@@ -12,5 +12,6 @@ export default defineConfig({
       '~/': `${pathSrc}/`,
     },
   },
+  base: '/geeker-table/',
   plugins: [vue(), vueJsx()],
 })
