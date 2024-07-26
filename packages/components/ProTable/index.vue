@@ -1,7 +1,7 @@
 <script setup lang="ts" name="ProTable">
 import { computed, onMounted, provide, reactive, ref, unref, watch } from 'vue'
 import { ElTable } from 'element-plus'
-import { Operation, Refresh, Search } from '@element-plus/icons-vue'
+import { DCaret, Operation, Refresh, Search } from '@element-plus/icons-vue'
 import Sortable from 'sortablejs'
 import SearchForm from '../SearchForm/index.vue'
 import { useTable } from '../../hooks/useTable'

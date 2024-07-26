@@ -1,12 +1,13 @@
 <script setup lang="tsx">
 import { h, reactive, ref } from 'vue'
 import { ElDivider, ElMessage } from 'element-plus'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import En from 'element-plus/es/locale/lang/en'
 import { CirclePlus, Delete, Download, EditPen, Moon, Sunny, Upload, View } from '@element-plus/icons-vue'
 
-import { toggleDark } from '~/composables'
+import { isDark, toggleDark } from '~/composables'
 
 const spacer = h(ElDivider, { direction: 'vertical' })
-const isDark = ref(false)
 const language = ref('zh')
 const tableSize = ref('default')
 const paginationSmall = ref(false)
@@ -16,7 +17,7 @@ const paginationAlign = ref('right')
 const geekerTableRef = ref()
 
 // 自定义渲染表头（使用tsx语法）
-function headerRender(scope: any) {
+function headerRender(scope) {
   return (
     <el-button type="primary" onClick={() => ElMessage.success('我是通过 tsx 语法渲染的表头')}>
       {scope.column.label}
@@ -515,15 +516,18 @@ const tableData = [
     avatar: 'https://i.imgtg.com/2023/01/16/QR57a.jpg',
   },
 ]
+
+function onGeekerTableInstance() {
+  console.log('geekerTableRef :>> ', geekerTableRef.value)
+}
 </script>
 
 <template>
   <div class="app-container">
-    <el-config-provider size="small">
+    <el-config-provider size="default" :locale="language ? En : zhCn">
       <div class="card">
         <el-space wrap :spacer="spacer">
-          <i inline-flex i="dark:ep-moon ep-sunny" />
-          <el-switch v-model="isDark" :active-icon="Sunny" :inactive-icon="Moon" inline-prompt size="default" @change="toggleDark" />
+          <el-switch :model-value="isDark" :active-icon="Sunny" :inactive-icon="Moon" inline-prompt size="default" @change="toggleDark" />
           <el-switch v-model="language" inline-prompt size="default">
             <template #active-action>
               <span class="custom-inactive-action">英</span>
@@ -539,7 +543,7 @@ const tableData = [
             {{ '空表格' }}
           </el-button>
           <el-tooltip content="请打开浏览器控制台查看打印信息">
-            <el-button type="primary">
+            <el-button type="primary" @click="onGeekerTableInstance">
               {{ '获取组件表格实例' }}
             </el-button>
           </el-tooltip>
@@ -590,51 +594,51 @@ const tableData = [
           </div>
         </el-space>
       </div>
-    </el-config-provider>
 
-    <div class="table-content table-box">
-      <GeekerTable ref="geekerTableRef" :columns="columns" :data="tableData">
-        <!-- 表格 header 按钮 -->
-        <template #tableHeader="scope">
-          <el-button v-auth="'add'" type="primary" :icon="CirclePlus">
-            新增用户
-          </el-button>
-          <el-button v-auth="'batchAdd'" type="primary" :icon="Upload" plain>
-            批量添加用户
-          </el-button>
-          <el-button v-auth="'export'" type="primary" :icon="Download" plain>
-            导出用户数据
-          </el-button>
-          <el-button type="danger" :icon="Delete" plain :disabled="!scope.isSelected">
-            批量删除用户
-          </el-button>
-        </template>
-        <!-- usernameHeader -->
-        <template #usernameHeader="scope">
-          <el-button type="primary" @click="ElMessage.success('我是通过作用域插槽渲染的表头')">
-            {{ scope.column.label }}
-          </el-button>
-        </template>
-        <!-- createTime -->
-        <template #createTime="scope">
-          <el-button type="primary" link @click="ElMessage.success('我是通过作用域插槽渲染的内容')">
-            {{ scope.row.createTime }}
-          </el-button>
-        </template>
-        <!-- 表格操作 -->
-        <template #operation>
-          <el-button type="primary" link :icon="View">
-            查看
-          </el-button>
-          <el-button type="primary" link :icon="EditPen">
-            编辑
-          </el-button>
-          <el-button type="danger" link :icon="Delete">
-            删除
-          </el-button>
-        </template>
-      </GeekerTable>
-    </div>
+      <div class="table-content table-box">
+        <GeekerTable ref="geekerTableRef" :columns="columns" :data="tableData">
+          <!-- 表格 header 按钮 -->
+          <template #tableHeader="scope">
+            <el-button type="primary" :icon="CirclePlus">
+              新增用户
+            </el-button>
+            <el-button type="primary" :icon="Upload" plain>
+              批量添加用户
+            </el-button>
+            <el-button type="primary" :icon="Download" plain>
+              导出用户数据
+            </el-button>
+            <el-button type="danger" :icon="Delete" plain :disabled="!scope.isSelected">
+              批量删除用户
+            </el-button>
+          </template>
+          <!-- usernameHeader -->
+          <template #usernameHeader="scope">
+            <el-button type="primary" @click="ElMessage.success('我是通过作用域插槽渲染的表头')">
+              {{ scope.column.label }}
+            </el-button>
+          </template>
+          <!-- createTime -->
+          <template #createTime="scope">
+            <el-button type="primary" link @click="ElMessage.success('我是通过作用域插槽渲染的内容')">
+              {{ scope.row.createTime }}
+            </el-button>
+          </template>
+          <!-- 表格操作 -->
+          <template #operation>
+            <el-button type="primary" link :icon="View">
+              查看
+            </el-button>
+            <el-button type="primary" link :icon="EditPen">
+              编辑
+            </el-button>
+            <el-button type="danger" link :icon="Delete">
+              删除
+            </el-button>
+          </template>
+        </GeekerTable>
+      </div>
+    </el-config-provider>
   </div>
 </template>
 
@@ -643,6 +647,9 @@ const tableData = [
   height: 100vh;
 }
 
+.dark .app-container {
+  background: var(--el-bg-color);
+}
 .app-container {
   padding: 12px;
   background: #f2f3f5;
@@ -657,6 +664,7 @@ const tableData = [
 
 .geeker-radio {
   display: flex;
+  align-items: center;
 }
 
 .geeker-small {
