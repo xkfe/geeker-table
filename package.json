@@ -1,7 +1,7 @@
 {
   "name": "@xkfe/geeker-table",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "✨二次封装element-plus的Table,高度灵活的配置,自动请求,简单快速 crud 实现!",
   "author": {
     "name": "xkfe",
@@ -28,7 +28,8 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "element-plus": "^2.4.0"
@@ -46,14 +47,18 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.23.2",
+    "@types/node": "^20.14.12",
     "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "bumpp": "^9.4.1",
     "eslint": "9.5.0",
     "eslint-plugin-format": "^0.1.2",
     "lint-staged": "^15.2.7",
     "sass": "^1.77.8",
     "simple-git-hooks": "^2.11.1",
+    "standard-version": "^9.5.0",
+    "tsup": "^8.2.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vue-tsc": "^2.0.24"

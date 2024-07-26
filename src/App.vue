@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import { h, reactive, ref } from 'vue'
 import { ElDivider, ElMessage } from 'element-plus'
-import { CirclePlus, Delete, Download, EditPen, Moon, Refresh, Sunny, Upload, View } from '@element-plus/icons-vue'
+import { CirclePlus, Delete, Download, EditPen, Moon, Sunny, Upload, View } from '@element-plus/icons-vue'
 
 import { toggleDark } from '~/composables'
 
@@ -15,20 +15,8 @@ const paginationAlign = ref('right')
 // GeekerTable 实例
 const geekerTableRef = ref()
 
-// 如果表格需要初始化请求参数，直接定义传给 GeekerTable (之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
-const initParam = reactive({ type: 1 })
-
-// dataCallback 是对于返回的表格数据做处理，如果你后台返回的数据不是 list && total 这些字段，可以在这里进行处理成这些字段
-// 或者直接去 hooks/useTable.ts 文件中把字段改为你后端对应的就行
-function dataCallback(data: any) {
-  return {
-    list: data.list,
-    total: data.total,
-  }
-}
-
 // 自定义渲染表头（使用tsx语法）
-function headerRender(scope) {
+function headerRender(scope: any) {
   return (
     <el-button type="primary" onClick={() => ElMessage.success('我是通过 tsx 语法渲染的表头')}>
       {scope.column.label}
@@ -634,7 +622,7 @@ const tableData = [
           </el-button>
         </template>
         <!-- 表格操作 -->
-        <template #operation="scope">
+        <template #operation>
           <el-button type="primary" link :icon="View">
             查看
           </el-button>
