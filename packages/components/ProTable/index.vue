@@ -234,7 +234,7 @@ defineExpose({
   />
 
   <!-- 表格主体 -->
-  <div class="card table-main">
+  <div class="table-main">
     <!-- 表格头部 操作按钮 -->
     <div class="table-header">
       <div class="header-button-lf">
@@ -271,20 +271,20 @@ defineExpose({
           v-if="item.type && columnTypes.includes(item.type)"
           v-bind="item"
           :align="item.align ?? 'center'"
-          :reserve-selection="item.type == 'selection'"
+          :reserve-selection="item.type === 'selection'"
         >
           <template #default="scope">
             <!-- expand -->
-            <template v-if="item.type == 'expand'">
+            <template v-if="item.type === 'expand'">
               <component :is="item.render" v-bind="scope" v-if="item.render" />
               <slot v-else :name="item.type" v-bind="scope" />
             </template>
             <!-- radio -->
-            <el-radio v-if="item.type == 'radio'" v-model="radio" :label="scope.row[rowKey]">
+            <el-radio v-if="item.type === 'radio'" v-model="radio" :label="scope.row[rowKey]">
               <i />
             </el-radio>
             <!-- sort -->
-            <el-tag v-if="item.type == 'sort'" class="move">
+            <el-tag v-if="item.type === 'sort'" class="move">
               <el-icon> <DCaret /></el-icon>
             </el-tag>
           </template>
