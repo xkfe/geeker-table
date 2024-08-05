@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject, ref } from 'vue'
-import type { ColumnProps } from '../../ProTable/interface'
+import type { ColumnProps } from '../../../types'
 import { handleProp } from '../../../utils'
 
 interface SearchFormItem {

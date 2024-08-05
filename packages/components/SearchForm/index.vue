@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { ArrowDown, ArrowUp, Delete, Search } from '@element-plus/icons-vue'
-import type { ColumnProps } from '../ProTable/interface'
-import type { BreakPoint } from '../Grid/interface'
+import type { BreakPoint, ColumnProps } from '../../types'
 import Grid from '../Grid/index.vue'
 import GridItem from '../Grid/components/GridItem.vue'
 import SearchFormItem from './components/SearchFormItem.vue'

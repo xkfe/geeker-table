@@ -1,5 +1,5 @@
 import { computed, reactive, toRefs } from 'vue'
-import type { Table } from './interface'
+import type { StateProps } from './interface'
 
 /**
  * @description table 页面操作方法封装
@@ -9,7 +9,7 @@ import type { Table } from './interface'
  * @param {Function} dataCallBack 对后台返回的数据进行处理的方法 (非必传)
  */
 export function useTable(api?: (params: any) => Promise<any>, initParam: object = {}, isPageable: boolean = true, dataCallBack?: (data: any) => any, requestError?: (error: any) => void) {
-  const state = reactive<Table.StateProps>({
+  const state = reactive<StateProps>({
     // 表格数据
     tableData: [],
     // 分页数据
@@ -74,7 +74,7 @@ export function useTable(api?: (params: any) => Promise<any>, initParam: object 
   const updatedTotalParam = () => {
     state.totalParam = {}
     // 处理查询参数，可以给查询参数加自定义前缀操作
-    const nowSearchParam: Table.StateProps['searchParam'] = {}
+    const nowSearchParam: StateProps['searchParam'] = {}
     // 防止手动清空输入框携带参数（这里可以自定义查询参数前缀）
     for (const key in state.searchParam) {
       // 某些情况下参数为 false/0 也应该携带参数

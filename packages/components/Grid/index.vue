@@ -15,7 +15,7 @@ import {
   useSlots,
   watch,
 } from 'vue'
-import type { BreakPoint } from './interface/index'
+import type { BreakPoint } from '../../types'
 
 interface Props {
   cols?: number | Record<BreakPoint, number>

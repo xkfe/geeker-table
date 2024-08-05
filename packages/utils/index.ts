@@ -1,4 +1,4 @@
-import type { FieldNamesProps } from '../components/ProTable/interface'
+import type { FieldNamesProps } from '../types'
 
 /**
  * @description:  是否为数组

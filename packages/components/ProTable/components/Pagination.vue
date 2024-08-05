@@ -1,15 +1,5 @@
 <script setup lang="ts">
-interface Pageable {
-  pageNum: number
-  pageSize: number
-  total: number
-}
-
-interface PaginationProps {
-  pageable: Pageable
-  handleSizeChange: (size: number) => void
-  handleCurrentChange: (currentPage: number) => void
-}
+import type { PaginationProps } from '../../../types'
 
 defineOptions({ name: 'Pagination' })
 defineProps<PaginationProps>()

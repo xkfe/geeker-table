@@ -1,6 +1,6 @@
 <script setup lang="tsx" name="TableColumn">
 import { inject, ref, useSlots } from 'vue'
-import type { ColumnProps, HeaderRenderScope, RenderScope } from '../interface'
+import type { ColumnProps, HeaderRenderScope, RenderScope } from '../../../types'
 import { filterEnum, formatValue, handleProp, handleRowAccordingToProp } from '../../../utils'
 
 defineProps<{ column: ColumnProps }>()
